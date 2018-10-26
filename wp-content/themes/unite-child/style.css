@@ -11,3 +11,43 @@
  Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
  Text Domain:  unite-child
 */
+
+.panel-film-meta {
+    padding: 5px 8px;
+}
+
+.panel-film-meta .meta{
+    display: inline-block;
+}
+
+.panel-film-meta .meta:not(:last-child) {
+    margin-right: 15px;
+}
+.single-film-meta {
+    display: block;
+    width: 100%;
+    background: #ffffff;
+    padding: 10px 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 1px 0 rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+}
+.single-film-meta .meta {
+    display: inline-block;
+}
+
+.single-film-meta .meta:not(:last-child) {
+    margin-right: 15px;
+}
+
+.meta-read-more {
+    padding: 8px 10px;
+    text-align: right;
+}
+
+.widget-area .form-inline .input-group .input-group-btn {
+    width: 1px;
+}
+.widget-area .input-group {
+    width: 100%;
+}

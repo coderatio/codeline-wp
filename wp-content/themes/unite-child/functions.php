@@ -195,4 +195,3 @@ function cl_get_last_added_films_shortcode( $atts = [])
 	return $layout;
 }
 add_shortcode( 'last_added_films', 'cl_get_last_added_films_shortcode' );
-
