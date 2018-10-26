@@ -35,3 +35,126 @@ function cl_register_movie_post_type() {
 	// Let's register our film post type
 	register_post_type( 'film', $args);
 }
+
+/**
+ * Register Taxonomies
+ *
+ * Taxonomies to be registered are Genre, Country, Year and Actor
+ */
+
+// 1 - Genres
+add_action( 'init', 'cl_add_genres_taxonomy' );
+function cl_add_genres_taxonomy() {
+	$labels = [
+		'name'              => _x( 'Genre', 'Film genres taxonomy', 'cl_film' ),
+		'singular_name'     => _x( 'Genre', 'Film genre taxonomy', 'cl_film' ),
+		'search_items'      => __( 'Search Genres', 'cl_film' ),
+		'all_items'         => __( 'All Genres', 'cl_film' ),
+		'parent_item'       => __( 'Parent Genre', 'cl_film' ),
+		'parent_item_colon' => __( 'Parent Genre:', 'cl_film' ),
+		'edit_item'         => __( 'Edit Genre', 'cl_film' ),
+		'update_item'       => __( 'Update Genre', 'cl_film' ),
+		'add_new_item'      => __( 'Add New Genre', 'cl_film' ),
+		'new_item_name'     => __( 'New Genre Name', 'cl_film' ),
+		'menu_name'         => __( 'Genres', 'cl_film' ),
+	];
+
+	$args = [
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => [ 'slug' => 'genre' ],
+	];
+
+	register_taxonomy( 'genre', [ 'film' ], $args );
+}
+
+// 2 - Countries
+add_action( 'init', 'cl_add_countries_taxonomy' );
+function cl_add_countries_taxonomy() {
+	$labels = [
+		'name'              => _x( 'Country', 'Film countries taxonomy', 'cl_film' ),
+		'singular_name'     => _x( 'Country', 'Film country taxonomy', 'cl_film' ),
+		'search_items'      => __( 'Search Countries', 'cl_film' ),
+		'all_items'         => __( 'All Countries', 'cl_film' ),
+		'parent_item'       => __( 'Parent Country', 'cl_film' ),
+		'parent_item_colon' => __( 'Parent Country:', 'cl_film' ),
+		'edit_item'         => __( 'Edit Country', 'cl_film' ),
+		'update_item'       => __( 'Update Country', 'cl_film' ),
+		'add_new_item'      => __( 'Add New Country', 'cl_film' ),
+		'new_item_name'     => __( 'New Country Name', 'cl_film' ),
+		'menu_name'         => __( 'Countries', 'cl_film' ),
+	];
+
+	$args = [
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => ['slug' => 'country'],
+	];
+
+	register_taxonomy( 'country', ['film'], $args );
+}
+
+// 3 - Years
+add_action( 'init', 'cl_add_years_taxonomy' );
+function cl_add_years_taxonomy() {
+	$labels = array(
+		'name'              => _x( 'Year', 'Film year taxonomies', 'cl_film' ),
+		'singular_name'     => _x( 'Year', 'Film year taxonomy', 'cl_film' ),
+		'search_items'      => __( 'Search Years', 'cl_film' ),
+		'all_items'         => __( 'All Years', 'cl_film' ),
+		'parent_item'       => __( 'Parent Year', 'cl_film' ),
+		'parent_item_colon' => __( 'Parent Year:', 'cl_film' ),
+		'edit_item'         => __( 'Edit Year', 'cl_film' ),
+		'update_item'       => __( 'Update Year', 'cl_film' ),
+		'add_new_item'      => __( 'Add New Year', 'cl_film' ),
+		'new_item_name'     => __( 'New Year Name', 'cl_film' ),
+		'menu_name'         => __( 'Years', 'cl_film' ),
+	);
+
+	$args = array(
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'year' ),
+	);
+
+	register_taxonomy( 'year', ['film'], $args );
+}
+
+// 4 - Actors
+add_action( 'init', 'cl_add_actors_taxonomy' );
+function cl_add_actors_taxonomy() {
+	$labels = [
+		'name'              => _x( 'Actor', 'Film actors taxonomy', 'cl_film' ),
+		'singular_name'     => _x( 'Actor', 'Film actor taxonomy', 'cl_film' ),
+		'search_items'      => __( 'Search Actors', 'cl_film' ),
+		'all_items'         => __( 'All Actors', 'cl_film' ),
+		'parent_item'       => __( 'Parent Actor', 'cl_film' ),
+		'parent_item_colon' => __( 'Parent Actor:', 'cl_film' ),
+		'edit_item'         => __( 'Edit Actor', 'cl_film' ),
+		'update_item'       => __( 'Update Actor', 'cl_film' ),
+		'add_new_item'      => __( 'Add New Actor', 'cl_film' ),
+		'new_item_name'     => __( 'New Actor Name', 'cl_film' ),
+		'menu_name'         => __( 'Actors', 'cl_film' ),
+	];
+
+	$args = [
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => [ 'slug' => 'actor' ],
+	];
+
+	register_taxonomy( 'actor', ['film'], $args );
+}
+
