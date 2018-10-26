@@ -158,3 +158,41 @@ function cl_add_actors_taxonomy() {
 	register_taxonomy( 'actor', ['film'], $args );
 }
 
+/**
+ * Shortcode to display latest 5 films
+ *
+ * @param $atts
+ *
+ * @return string
+ */
+function cl_get_last_added_films_shortcode( $atts = [])
+{
+	extract( shortcode_atts( [
+		'limit' => isset($atts['limit']) && $atts['limit'] != '' && $atts['limit'] > 0 ? $atts['limit'] : 5
+	], $atts ) );
+
+	$args = [
+		'posts_per_page'  => $limit,
+		'post_type' => 'film',
+		'order' => 'desc'
+	];
+
+	$films = new WP_Query($args);
+	$layout = "<div class='list-group'>";
+	$layout .= "<li class='list-group-item active'>Latest Films</li>";
+	while($films->have_posts()): $films->the_post();
+		$permalink = get_the_permalink();
+		$layout .= "<a class='list-group-item' href='{$permalink}'>";
+		$layout .= "<h4 class='list-group-item-heading'>";
+		$layout .= get_the_title();
+		$layout .= "</h4>";
+		$layout .= "<p class='list-group-item-text'>" . substr(get_the_content(), 0, 50) . "</p>";
+		$layout .= "</a>";
+	endwhile;
+	wp_reset_postdata();
+	$layout .= "</ul>";
+
+	return $layout;
+}
+add_shortcode( 'last_added_films', 'cl_get_last_added_films_shortcode' );
+
